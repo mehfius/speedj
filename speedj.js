@@ -100,14 +100,6 @@ speedj.all = function(urls) {
   return Promise.all(urls.map(url => speedj(url)));
 };
 
-// Limpa cache de scripts e styles
-speedj.clearCache = function() {
-  const scripts = document.querySelectorAll('script[src*="?v="]');
-  const links = document.querySelectorAll('link[href*="?v="]');
-  scripts.forEach(s => s.remove());
-  links.forEach(l => l.remove());
-};
-
 // Configurações globais
 speedj.config = {
   productionDomain: null

@@ -58,13 +58,6 @@ speedj.all(['script1.js', 'script2.js', 'style.css'])
   .then(() => console.log('Todos os arquivos carregados!'));
 ```
 
-### `speedj.clearCache()`
-Limpa o cache de scripts e styles carregados dinamicamente. **Funciona apenas em ambiente de desenvolvimento**.
-
-```javascript
-speedj.clearCache();
-```
-
 ## Configuração
 
 ### Definir Domínio de Produção
