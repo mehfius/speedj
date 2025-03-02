@@ -111,6 +111,8 @@ if (scriptElement) {
   const prodDomain = scriptElement.getAttribute('data-production-domain');
   if (prodDomain) {
     speedj.config.productionDomain = prodDomain;
+  } else {
+    console.error('%cError: The "data-production-domain" attribute is not set. Please configure the production domain.', 'color: red');
   }
 }
 
