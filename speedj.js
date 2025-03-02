@@ -22,25 +22,21 @@ const speedj = async function(url) {
 
 function isProduction() {
   const host = window.location.hostname;
-  // Considera produção se não for localhost ou 127.0.0.1
-  return !(host === 'localhost' || host === '127.0.0.1');
+  // Se o domínio de produção foi configurado, verifica se o host atual corresponde
+  return speedj.config.productionDomain ? host === speedj.config.productionDomain : false;
 }
 
 function normalizeUrl(url) {
-  // Verifica se a URL já é HTTPS ou HTTP
+  // Verifica se a URL já é absoluta (HTTP ou HTTPS)
   if (url.startsWith('http://') || url.startsWith('https://')) {
-    // Em produção, força HTTPS
-    if (isProduction() && url.startsWith('http://')) {
-      return url.replace('http://', 'https://');
-    }
-    return url;
+    return url; // Retorna a URL sem modificações
   }
 
   // URLs relativas: normaliza para o ambiente correto
   if (isProduction()) {
     return 'https://' + window.location.hostname + '/' + url;
   } else {
-    return 'http://127.0.0.1:3001/' + url + '?v=' + new Date().getTime();
+    return 'http://' + window.location.hostname + '/' + url + '?v=' + new Date().getTime();
   }
 }
 
@@ -101,4 +97,23 @@ speedj.clearCache = function() {
   const links = document.querySelectorAll('link[href*="?v="]');
   scripts.forEach(s => s.remove());
   links.forEach(l => l.remove());
+};
+
+// Configurações globais
+speedj.config = {
+  productionDomain: null
+};
+
+// Verifica se há configuração no script de carregamento
+const scriptElement = document.currentScript;
+if (scriptElement) {
+  const prodDomain = scriptElement.getAttribute('data-production-domain');
+  if (prodDomain) {
+    speedj.config.productionDomain = prodDomain;
+  }
+}
+
+// Método para configurar o domínio de produção
+speedj.setConfig = function(config) {
+  Object.assign(speedj.config, config);
 };

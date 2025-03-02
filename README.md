@@ -7,7 +7,10 @@ Uma biblioteca JavaScript para carregar dinamicamente arquivos JS e CSS, com sup
 Inclua a biblioteca diretamente no seu HTML:
 
 ```html
-<script src="https://speedj.mehfi.us/speedj.js"></script>
+<script 
+  src="https://speedj.mehfi.us/speedj.js" 
+  data-production-domain="meudominio.com">
+</script>
 ```
 
 ## Uso Básico
@@ -35,15 +38,15 @@ speedj.all(['script1.js', 'script2.js', 'style.css'])
 ## Funcionalidades
 
 ### Detecção Automática de Ambiente
-- **Desenvolvimento:** `localhost` ou `127.0.0.1`.
-- **Produção:** Qualquer outro domínio.
+- **Desenvolvimento:** Qualquer domínio diferente do configurado como produção
+- **Produção:** Domínio configurado pelo usuário
 
 ### Limpeza Automática de Cache
 Em ambiente de desenvolvimento, a biblioteca remove automaticamente versões antigas de scripts e estilos ao carregar novos recursos.
 
 ### Normalização de URLs
-- **Produção:** `script.js` → `https://meudominio.com/script.js`.
-- **Desenvolvimento:** `script.js` → `http://127.0.0.1/script.js?v=123456789`.
+- **Produção:** `script.js` → `https://meudominio.com/script.js`
+- **Desenvolvimento:** `script.js` → `http://[host-atual]/script.js?v=123456789`
 
 ## Métodos Adicionais
 
@@ -61,6 +64,32 @@ Limpa o cache de scripts e styles carregados dinamicamente. **Funciona apenas em
 ```javascript
 speedj.clearCache();
 ```
+
+## Configuração
+
+### Definir Domínio de Produção
+Você pode configurar o domínio de produção de duas maneiras:
+
+1. Via atributo no script:
+```html
+<script 
+  src="https://speedj.mehfi.us/speedj.js" 
+  data-production-domain="meudominio.com">
+</script>
+```
+
+2. Via JavaScript:
+```javascript
+// Configura o domínio de produção
+speedj.setConfig({ productionDomain: 'meudominio.com' });
+```
+
+### Benefícios
+- **Simplicidade:** Apenas o domínio de produção precisa ser configurado.
+- **Flexibilidade:** Qualquer domínio diferente do configurado é automaticamente considerado desenvolvimento.
+- **Manutenção:** Centraliza a lógica de verificação de ambiente em um único lugar.
+
+Com essa abordagem, a biblioteca se torna mais adaptável e fácil de usar em diferentes cenários. 🚀
 
 ## Licença
 
