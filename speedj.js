@@ -22,8 +22,16 @@ const speedj = async function(url) {
 
 function isProduction() {
   const host = window.location.hostname;
-  // Se o domínio de produção foi configurado, verifica se o host atual corresponde
-  return speedj.config.productionDomain ? host === speedj.config.productionDomain : false;
+  const configDomain = speedj.config.productionDomain;
+  
+  if (!configDomain) return false;
+  
+  // Remove porta do domínio configurado (se houver)
+  const cleanConfigDomain = configDomain.split(':')[0];
+  // Remove porta do host atual
+  const cleanHost = host.split(':')[0];
+  
+  return cleanHost === cleanConfigDomain;
 }
 
 function normalizeUrl(url) {
@@ -33,10 +41,11 @@ function normalizeUrl(url) {
   }
 
   // URLs relativas: normaliza para o ambiente correto
+  const fullHost = window.location.host; // Inclui a porta se houver
   if (isProduction()) {
-    return 'https://' + window.location.hostname + '/' + url;
+    return 'https://' + fullHost + '/' + url;
   } else {
-    return 'http://' + window.location.hostname + '/' + url + '?v=' + new Date().getTime();
+    return 'http://' + fullHost + '/' + url + '?v=' + new Date().getTime();
   }
 }
 
