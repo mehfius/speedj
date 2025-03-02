@@ -122,6 +122,11 @@ if (scriptElement) {
   }
 }
 
+// Exibe mensagem apenas em desenvolvimento
+if (!isProduction()) {
+  console.log('%cRunning in development environment', 'color: blue');
+}
+
 // Método para configurar o domínio de produção
 speedj.setConfig = function(config) {
   Object.assign(speedj.config, config);
