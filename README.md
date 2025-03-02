@@ -68,26 +68,14 @@ speedj.clearCache();
 ## Configuração
 
 ### Definir Domínio de Produção
-Você pode configurar o domínio de produção de duas maneiras:
+Você pode configurar o domínio de produção via atributo no script:
 
-1. Via atributo no script:
 ```html
 <script 
   src="https://speedj.mehfi.us/speedj.js" 
   data-production-domain="meudominio.com">
 </script>
 ```
-
-2. Via JavaScript:
-```javascript
-// Configura o domínio de produção
-speedj.setConfig({ productionDomain: 'meudominio.com' });
-```
-
-### Benefícios
-- **Simplicidade:** Apenas o domínio de produção precisa ser configurado.
-- **Flexibilidade:** Qualquer domínio diferente do configurado é automaticamente considerado desenvolvimento.
-- **Manutenção:** Centraliza a lógica de verificação de ambiente em um único lugar.
 
 Com essa abordagem, a biblioteca se torna mais adaptável e fácil de usar em diferentes cenários. 🚀
 
