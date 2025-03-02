@@ -1,32 +1,47 @@
 const speedj = async function(url) {
-  // Normaliza a URL
-  url = normalizeUrl(url);
+  try {
+    url = normalizeUrl(url);
+    return new Promise((resolve, reject) => {
+      const ext = getFileExtension(url);
 
-  return new Promise((resolve, reject) => {
-    const ext = getFileExtension(url);
-
-    switch (ext) {
-      case 'js':
-        loadScript(url, resolve, reject);
-        break;
-      case 'css':
-        loadStyle(url, resolve, reject);
-        break;
-      default:
-        reject(`Tipo de arquivo não suportado: ${ext}`);
-    }
-  });
+      switch (ext) {
+        case 'js':
+          loadScript(url, resolve, reject);
+          break;
+        case 'css':
+          loadStyle(url, resolve, reject);
+          break;
+        default:
+          reject(`Tipo de arquivo não suportado: ${ext}`);
+      }
+    });
+  } catch (error) {
+    return Promise.reject(`Erro ao normalizar a URL: ${error.message}`);
+  }
 };
 
+function isProduction() {
+  const host = window.location.hostname;
+  // Considera produção se não for localhost ou 127.0.0.1
+  return !(host === 'localhost' || host === '127.0.0.1');
+}
+
 function normalizeUrl(url) {
-  if (!url.startsWith('https')) {
-    if (window.location.href.includes("mehfi.us")) {
-      return 'https://mehfi.us/' + url;
-    } else {
-      return 'http://127.0.0.1:3001/' + url + '?v=' + new Date().getTime();
+  // Verifica se a URL já é HTTPS ou HTTP
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    // Em produção, força HTTPS
+    if (isProduction() && url.startsWith('http://')) {
+      return url.replace('http://', 'https://');
     }
+    return url;
   }
-  return url;
+
+  // URLs relativas: normaliza para o ambiente correto
+  if (isProduction()) {
+    return 'https://' + window.location.hostname + '/' + url;
+  } else {
+    return 'http://127.0.0.1:3001/' + url + '?v=' + new Date().getTime();
+  }
 }
 
 function getFileExtension(url) {
@@ -41,7 +56,10 @@ function loadScript(url, resolve, reject) {
   script.src = url;
   script.onload = () => {
     setTimeout(() => {
-      previousScripts.forEach(s => s.remove());
+      // Remove scripts antigos apenas em desenvolvimento
+      if (!isProduction()) {
+        previousScripts.forEach(s => s.remove());
+      }
       resolve();
     }, 0);
   };
@@ -58,7 +76,10 @@ function loadStyle(url, resolve, reject) {
   link.href = url;
   link.onload = () => {
     setTimeout(() => {
-      previousLinks.forEach(s => s.remove());
+      // Remove estilos antigos apenas em desenvolvimento
+      if (!isProduction()) {
+        previousLinks.forEach(s => s.remove());
+      }
       resolve();
     }, 0);
   };
