@@ -12,11 +12,11 @@ const speedj = async function(url) {
           loadStyle(url, resolve, reject);
           break;
         default:
-          reject(`Tipo de arquivo não suportado: ${ext}`);
+          reject(`Unsupported file type: ${ext}`);
       }
     });
   } catch (error) {
-    return Promise.reject(`Erro ao normalizar a URL: ${error.message}`);
+    return Promise.reject(`Error normalizing URL: ${error.message}`);
   }
 };
 
@@ -68,7 +68,7 @@ function loadScript(url, resolve, reject) {
       resolve();
     }, 0);
   };
-  script.onerror = () => reject(`Erro ao carregar script: ${url}`);
+  script.onerror = () => reject(`Error loading script: ${url}`);
   document.head.appendChild(script);
 }
 
@@ -88,7 +88,7 @@ function loadStyle(url, resolve, reject) {
       resolve();
     }, 0);
   };
-  link.onerror = () => reject(`Erro ao carregar estilo: ${url}`);
+  link.onerror = () => reject(`Error loading style: ${url}`);
   document.head.appendChild(link);
 }
 

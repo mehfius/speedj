@@ -1,77 +1,77 @@
 # Speedj
 
-Uma biblioteca JavaScript para carregar dinamicamente arquivos JS e CSS, com suporte para ambientes de desenvolvimento e produção.
+A JavaScript library for dynamically loading JS and CSS files, with support for development and production environments.
 
-## Instalação
+## Installation
 
-Inclua a biblioteca diretamente no seu HTML:
+Include the library directly in your HTML:
 
 ```html
 <script 
   src="https://speedj.mehfi.us/speedj.js" 
-  data-production-domain="meudominio.com">
+  data-production-domain="mydomain.com">
 </script>
 ```
 
-## Uso Básico
+## Basic Usage
 
-### Carregar um Script
+### Load a Script
 ```javascript
 speedj('script.js')
-  .then(() => console.log('Script carregado!'))
+  .then(() => console.log('Script loaded!'))
   .catch(err => console.error(err));
 ```
 
-### Carregar um Estilo
+### Load a Style
 ```javascript
 speedj('style.css')
-  .then(() => console.log('Estilo carregado!'))
+  .then(() => console.log('Style loaded!'))
   .catch(err => console.error(err));
 ```
 
-### Carregar Múltiplos Arquivos
+### Load Multiple Files
 ```javascript
 speedj.all(['script1.js', 'script2.js', 'style.css'])
-  .then(() => console.log('Todos os arquivos carregados!'));
+  .then(() => console.log('All files loaded!'));
 ```
 
-## Funcionalidades
+## Features
 
-### Detecção Automática de Ambiente
-- **Desenvolvimento:** Qualquer domínio diferente do configurado como produção
-- **Produção:** Domínio configurado pelo usuário
+### Automatic Environment Detection
+- **Development:** Any domain different from the configured production domain
+- **Production:** User-configured domain
 
-### Limpeza Automática de Cache
-Em ambiente de desenvolvimento, a biblioteca remove automaticamente versões antigas de scripts e estilos ao carregar novos recursos.
+### Automatic Cache Cleanup
+In development environment, the library automatically removes old versions of scripts and styles when loading new resources.
 
-### Normalização de URLs
-- **Produção:** `script.js` → `https://meudominio.com/script.js`
-- **Desenvolvimento:** `script.js` → `http://[host-atual]/script.js?v=123456789`
+### URL Normalization
+- **Production:** `script.js` → `https://mydomain.com/script.js`
+- **Development:** `script.js` → `http://[current-host]/script.js?v=123456789`
 
-## Métodos Adicionais
+## Additional Methods
 
 ### `speedj.all(urls)`
-Carrega múltiplos arquivos simultaneamente.
+Loads multiple files simultaneously.
 
 ```javascript
 speedj.all(['script1.js', 'script2.js', 'style.css'])
-  .then(() => console.log('Todos os arquivos carregados!'));
+  .then(() => console.log('All files loaded!'));
 ```
 
-## Configuração
+## Configuration
 
-### Definir Domínio de Produção
-Você pode configurar o domínio de produção via atributo no script:
+### Set Production Domain
+You can configure the production domain via script attribute:
 
 ```html
 <script 
   src="https://speedj.mehfi.us/speedj.js" 
-  data-production-domain="meudominio.com">
+  data-production-domain="mydomain.com">
 </script>
 ```
 
-Com essa abordagem, a biblioteca se torna mais adaptável e fácil de usar em diferentes cenários. 🚀
+With this approach, the library becomes more adaptable and easy to use in different scenarios. 🚀
 
-## Licença
+## License
 
-Este projeto está licenciado sob a [MIT License](LICENSE). 
+This project is licensed under the [MIT License](LICENSE). 
