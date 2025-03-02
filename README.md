@@ -1,6 +1,6 @@
 # Speedj
 
-A JavaScript library for dynamically loading JS and CSS files, with support for development and production environments.
+Speedj is a powerful and flexible library that simplifies dynamic resource loading, supports different environments, and makes configuration and usage easy. Its features are designed to improve performance and developer experience, making it an excellent choice for projects that require dynamic loading of scripts and styles.
 
 ## Installation
 
