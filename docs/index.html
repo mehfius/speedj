@@ -15,15 +15,11 @@
     <button id="loadStyle">Load Style</button>
     <script>
         document.getElementById('loadScript').addEventListener('click', () => {
-            speedj('speedj/assets/example.js')
-                .then(() => console.log('Script carregado com sucesso!'))
-                .catch(err => console.error('Erro ao carregar script:', err));
+            speedj('speedj/assets/example.js');
         });
 
         document.getElementById('loadStyle').addEventListener('click', () => {
-            speedj('speedj/assets/example.css')
-                .then(() => console.log('Estilo carregado com sucesso!'))
-                .catch(err => console.error('Erro ao carregar estilo:', err));
+            speedj('speedj/assets/example.css');
         });
     </script>
 </body>

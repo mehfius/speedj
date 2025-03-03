@@ -25,21 +25,16 @@ Include the library directly in your HTML:
 ### Load a Script
 ```javascript
 speedj('script.js')
-  .then(() => console.log('Script loaded!'))
-  .catch(err => console.error(err));
 ```
 
 ### Load a Style
 ```javascript
 speedj('style.css')
-  .then(() => console.log('Style loaded!'))
-  .catch(err => console.error(err));
 ```
 
 ### Load Multiple Files
 ```javascript
 speedj.all(['script1.js', 'script2.js', 'style.css'])
-  .then(() => console.log('All files loaded!'));
 ```
 
 ## Features
