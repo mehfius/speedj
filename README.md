@@ -77,7 +77,7 @@ You can configure the production domain via script attribute:
 
 ```html
 <script 
-  src="https://speedj.mehfi.us/speedj.js" 
+  src="https://cdn.jsdelivr.net/gh/mehfius/speedj/src/speedj.js" 
   data-production-domain="mydomain.com">
 </script>
 ```
