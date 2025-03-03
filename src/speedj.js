@@ -93,7 +93,7 @@ const speedj = (function() {
 		}
 	};
 
-	speedj.version = '1.0.4';
+	speedj.version = '1.0.5';
 
 	speedj.all = function (urls) {
 		return Promise.all(urls.map(url => speedj(url)));
