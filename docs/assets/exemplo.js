@@ -1,2 +1,2 @@
-console.log('Script exemplo.js carregado com sucesso!');
-document.body.innerHTML += '<p>Script carregado com sucesso!</p>'; 
+console.log('example.js script loaded successfully!');
+document.body.innerHTML += '<p>Script loaded successfully!</p>'; 
