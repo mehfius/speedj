@@ -16,10 +16,12 @@
     <script>
         document.getElementById('loadScript').addEventListener('click', async () => {
             await speedj('speedj/assets/example.js');
+            alert('js');
         });
 
         document.getElementById('loadStyle').addEventListener('click', async () => {
-            await speedj('speedj/assets/example.css');
+            await speedj('speedj/assets/example.css');;
+            alert('css')
         });
     </script>
 </body>
