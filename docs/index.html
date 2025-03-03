@@ -18,13 +18,13 @@
   <script>
     // Atualiza os caminhos dos arquivos
     document.getElementById('loadScript').addEventListener('click', () => {
-      speedj('assets/exemplo.js')
+      speedj('speedj/assets/exemplo.js')
         .then(() => console.log('Script carregado com sucesso!'))
         .catch(err => console.error('Erro ao carregar script:', err));
     });
 
     document.getElementById('loadStyle').addEventListener('click', () => {
-      speedj('assets/exemplo.css')
+      speedj('speedj/assets/exemplo.css')
         .then(() => console.log('Estilo carregado com sucesso!'))
         .catch(err => console.error('Erro ao carregar estilo:', err));
     });
