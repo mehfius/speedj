@@ -11,19 +11,8 @@
 
 <body>
     <h1>Speedj Example</h1>
-    <button id="loadScript">Load Script</button>
-    <button id="loadStyle">Load Style</button>
-    <script>
-        document.getElementById('loadScript').addEventListener('click', async () => {
-            await speedj('speedj/assets/example.js');
-            alert('js');
-        });
-
-        document.getElementById('loadStyle').addEventListener('click', async () => {
-            await speedj('speedj/assets/example.css');
-            alert('css');
-        });
-    </script>
+    <button id="loadScript" onclick="speedj('speedj/assets/example.js')">Load Script</button>
+    <button id="loadStyle" onclick="speedj('speedj/assets/example.css')">Load Style</button>
 </body>
 
 </html>
