@@ -1,3 +1,10 @@
+// == Speedj Version Box ==
+// ╔══════════════════════╗
+// ║  Speedj v1.0.5       ║
+// ║  Production Ready    ║
+// ║  MIT Licensed       ║
+// ╚══════════════════════╝
+
 const speedj = (function() {
 	// Private functions
 	function isProduction() {
