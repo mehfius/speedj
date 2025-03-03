@@ -88,12 +88,9 @@ With this approach, the library becomes more adaptable and easy to use in differ
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Examples
+## Live Demo
 
-See the live example at: [https://mehfius.github.io/speedj/](https://mehfius.github.io/speedj/)
-
-## Documentation
+See Speedj in action: [https://mehfius.github.io/speedj/](https://mehfius.github.io/speedj/)
 
 For more details, see:
-- [CHANGELOG.md](CHANGELOG.md) - Change history
-- [Examples](docs/examples/) - Usage examples 
+- [CHANGELOG.md](CHANGELOG.md) - Version history and updates 
