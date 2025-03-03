@@ -37,3 +37,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/en/).
 ### Fixed
 - Corrected script path in example HTML files
 - Resolved 404 errors when accessing examples through GitHub Pages 
+
+## [1.0.4] - 2024-01-01
+
+### Adicionado
+- Exibição da versão da biblioteca no console quando em ambiente de desenvolvimento
+
+### Alterado
+- Atualizada versão da biblioteca para 1.0.4 

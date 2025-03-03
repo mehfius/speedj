@@ -91,7 +91,7 @@ function loadStyle(url, resolve, reject) {
 	document.head.appendChild(link);
 }
 
-speedj.version = '1.0.0';
+speedj.version = '1.0.4';
 
 speedj.all = function (urls) {
 	return Promise.all(urls.map(url => speedj(url)));
@@ -112,4 +112,5 @@ if (scriptElement) {
 }
 if (!isProduction()) {
 	console.log('%c Running in development environment ', 'color: yellow; background: black');
+	console.log(`%c Speedj v${speedj.version} `, 'color: white; background: green; font-weight: bold');
 }
