@@ -41,9 +41,7 @@ const speedj = (function() {
 		script.src = url;
 		script.onload = () => {
 			setTimeout(() => {
-				if (!isProduction()) {
-					previousScripts.forEach(s => s.remove());
-				}
+				previousScripts.forEach(s => s.remove());
 				resolve();
 			}, 0);
 		};
@@ -60,9 +58,7 @@ const speedj = (function() {
 		link.href = url;
 		link.onload = () => {
 			setTimeout(() => {
-				if (!isProduction()) {
-					previousLinks.forEach(s => s.remove());
-				}
+				previousLinks.forEach(s => s.remove());
 				resolve();
 			}, 0);
 		};
