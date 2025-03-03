@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Speedj Example</title>
-  <!-- Atualiza o caminho da biblioteca -->
-  <script 
-    src="https://cdn.jsdelivr.net/gh/mehfius/speedj/src/speedj.js" 
-    data-production-domain="meusite.com">
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speedj Example</title>
+    <script src="https://cdn.jsdelivr.net/gh/mehfius/speedj/src/speedj.js" data-production-domain="meusite.com">
+    </script>
 </head>
+
 <body>
-  <h1>Speedj Example</h1>
-  <button id="loadScript">Load Script</button>
-  <button id="loadStyle">Load Style</button>
+    <h1>Speedj Example</h1>
+    <button id="loadScript">Load Script</button>
+    <button id="loadStyle">Load Style</button>
+    <script>
+        document.getElementById('loadScript').addEventListener('click', () => {
+            speedj('speedj/assets/example.js')
+                .then(() => console.log('Script carregado com sucesso!'))
+                .catch(err => console.error('Erro ao carregar script:', err));
+        });
 
-  <script>
-    // Atualiza os caminhos dos arquivos
-    document.getElementById('loadScript').addEventListener('click', () => {
-      speedj('speedj/assets/example.js')
-        .then(() => console.log('Script carregado com sucesso!'))
-        .catch(err => console.error('Erro ao carregar script:', err));
-    });
-
-    document.getElementById('loadStyle').addEventListener('click', () => {
-      speedj('speedj/assets/example.css')
-        .then(() => console.log('Estilo carregado com sucesso!'))
-        .catch(err => console.error('Erro ao carregar estilo:', err));
-    });
-  </script>
+        document.getElementById('loadStyle').addEventListener('click', () => {
+            speedj('speedj/assets/example.css')
+                .then(() => console.log('Estilo carregado com sucesso!'))
+                .catch(err => console.error('Erro ao carregar estilo:', err));
+        });
+    </script>
 </body>
-</html> 
+
+</html>
