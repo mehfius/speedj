@@ -26,3 +26,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/en/).
   - `exemplo.css` → `speedj-example.css`
   - `exemplo.html` → `speedj-example.html`
 - Updated references in documentation and example files 
+
+## [1.0.3] - 2024-01-01
+
+### Changed
+- Updated URL normalization to use dynamic base URL detection
+- Modified script loading path to work both locally and on GitHub Pages
+- Improved error handling for URL normalization
+
+### Fixed
+- Corrected script path in example HTML files
+- Resolved 404 errors when accessing examples through GitHub Pages 

@@ -37,15 +37,19 @@ function isProduction() {
 function normalizeUrl(url) {
   // Verifica se a URL já é absoluta (HTTP ou HTTPS)
   if (url.startsWith('http://') || url.startsWith('https://')) {
-    return url; // Retorna a URL sem modificações
+    return url;
   }
 
+  // Obtém o domínio base dinamicamente
+  const protocol = window.location.protocol;
+  const host = window.location.host;
+  const baseUrl = `${protocol}//${host}`;
+
   // URLs relativas: normaliza para o ambiente correto
-  const fullHost = window.location.host; // Inclui a porta se houver
   if (isProduction()) {
-    return 'https://' + fullHost + '/' + url;
+    return `${baseUrl}/${url}`;
   } else {
-    return 'http://' + fullHost + '/' + url + '?v=' + new Date().getTime();
+    return `${baseUrl}/${url}?v=${new Date().getTime()}`;
   }
 }
 

@@ -15,7 +15,7 @@ Include the library directly in your HTML:
 
 ```html
 <script 
-  src="src/speedj.js" 
+  src="/speedj/src/speedj.js" 
   data-production-domain="exampledomain.com">
 </script>
 ```
@@ -54,6 +54,11 @@ In development environment, the library automatically removes old versions of sc
 ### URL Normalization
 - **Production:** `script.js` → `https://mydomain.com/script.js`
 - **Development:** `script.js` → `http://[current-host]/script.js?v=123456789`
+
+### Dynamic URL Handling
+- Automatically detects and uses the correct base URL
+- Works seamlessly in both local and production environments
+- Handles relative paths efficiently
 
 ## Additional Methods
 
