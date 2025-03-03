@@ -45,3 +45,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/en/).
 
 ### Alterado
 - Atualizada versão da biblioteca para 1.0.4 
+
+## [1.0.5] - 2024-01-01
+
+### Changed
+- Updated CDN URL to use fastly.jsdelivr.net instead of cdn.jsdelivr.net for better cache control
+- Added timestamp parameter to CDN URL to prevent caching issues during development
+
+### Fixed
+- Resolved jsDelivr caching issues that prevented library updates from being reflected
+- Improved cache busting mechanism for development environment 
