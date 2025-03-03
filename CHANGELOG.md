@@ -17,3 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/en/).
 
 ### Corrigido
 - Links de referência no README.md e exemplos para apontar para o novo caminho do arquivo principal 
+
+## [1.0.2] - 2024-01-01
+
+### Changed
+- Renamed example files to be more descriptive:
+  - `exemplo.js` → `speedj-example.js`
+  - `exemplo.css` → `speedj-example.css`
+  - `exemplo.html` → `speedj-example.html`
+- Updated references in documentation and example files 

@@ -85,10 +85,13 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Examples
 
-See usage examples in the [examples/](examples/) folder.
+See usage examples in the [docs/examples/](docs/examples/) folder:
+- [Basic Example](docs/speedj-example.html) - Basic usage of script and style loading
+- [Example Script](docs/assets/speedj-example.js) - Example JavaScript file
+- [Example Style](docs/assets/speedj-example.css) - Example CSS file
 
 ## Documentation
 
 For more details, see:
 - [CHANGELOG.md](CHANGELOG.md) - Change history
-- [Examples](examples/) - Usage examples 
+- [Examples](docs/examples/) - Usage examples 

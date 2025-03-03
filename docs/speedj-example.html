@@ -1,0 +1,13 @@
+<script>
+    document.getElementById('loadScript').addEventListener('click', () => {
+      speedj('assets/speedj-example.js')
+        .then(() => console.log('Script loaded successfully!'))
+        .catch(err => console.error('Error loading script:', err));
+    });
+
+    document.getElementById('loadStyle').addEventListener('click', () => {
+      speedj('assets/speedj-example.css')
+        .then(() => console.log('Style loaded successfully!'))
+        .catch(err => console.error('Error loading style:', err));
+    });
+</script> 
