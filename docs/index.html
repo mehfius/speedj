@@ -14,12 +14,12 @@
     <button id="loadScript">Load Script</button>
     <button id="loadStyle">Load Style</button>
     <script>
-        document.getElementById('loadScript').addEventListener('click', () => {
-            speedj('speedj/assets/example.js');
+        document.getElementById('loadScript').addEventListener('click', async () => {
+            await speedj('speedj/assets/example.js');
         });
 
-        document.getElementById('loadStyle').addEventListener('click', () => {
-            speedj('speedj/assets/example.css');
+        document.getElementById('loadStyle').addEventListener('click', async () => {
+            await speedj('speedj/assets/example.css');
         });
     </script>
 </body>
