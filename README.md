@@ -2,13 +2,13 @@
 
 Speedj is a powerful and flexible library that simplifies dynamic resource loading, supports different environments, and makes configuration and usage easy. Its features are designed to improve performance and developer experience, making it an excellent choice for projects that require dynamic loading of scripts and styles.
 
-## Installation
+## Instalação
 
-Include the library directly in your HTML:
+Inclua a biblioteca diretamente no seu HTML:
 
 ```html
 <script 
-  src="https://speedj.mehfi.us/speedj.js" 
+  src="src/speedj.js" 
   data-production-domain="mydomain.com">
 </script>
 ```
@@ -74,4 +74,14 @@ With this approach, the library becomes more adaptable and easy to use in differ
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). 
+This project is licensed under the [MIT License](LICENSE).
+
+## Exemplos
+
+Veja um exemplo de uso na pasta [examples/](examples/).
+
+## Documentação
+
+Para mais detalhes, consulte:
+- [CHANGELOG.md](CHANGELOG.md) - Histórico de mudanças
+- [Exemplos](examples/) - Exemplos de uso 

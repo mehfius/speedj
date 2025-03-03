@@ -1,0 +1,21 @@
+body {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 20px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #0d47a1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+/* ... código do exemplo.css ... */ 
