@@ -55,3 +55,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/en/).
 ### Fixed
 - Resolved jsDelivr caching issues that prevented library updates from being reflected
 - Improved cache busting mechanism for development environment 
+
+## [1.0.6] - 2024-01-01
+
+### Changed
+- Updated cache busting parameter from `v` to `cache_bust` for better clarity
+- Simplified development environment console message
+- Removed unnecessary console.log statements
+
+### Fixed
+- Corrected template literal in development environment message
+- Improved URL handling for cache busting 

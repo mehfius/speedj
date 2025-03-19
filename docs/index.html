@@ -10,9 +10,42 @@
 </head>
 
 <body>
-    <h1>Speedj Example</h1>
-    <button onclick="speedj('speedj/assets/example.js')">Load Script</button>
-    <button onclick="speedj('speedj/assets/example.css')">Load Style</button>
+    <script>
+        // Verifica se o navegador suporta a API
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true; // Mantém o reconhecimento contínuo
+    recognition.interimResults = true; // Mostra resultados parciais enquanto fala
+
+    recognition.onresult = (event) => {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            transcript += event.results[i][0].transcript;
+        }
+        document.getElementById("output").innerText = transcript; // Exibe no HTML
+    };
+
+    recognition.onerror = (event) => console.error("Erro:", event.error);
+
+    // Inicia o reconhecimento ao clicar no botão
+    document.getElementById("start").addEventListener("click", () => {
+        recognition.start();
+    });
+
+    document.getElementById("stop").addEventListener("click", () => {
+        recognition.stop();
+    });
+} else {
+    console.error("Seu navegador não suporta reconhecimento de fala.");
+}
+
+    </script>
+<button id="start">Iniciar</button>
+<button id="stop">Parar</button>
+<p id="output"></p>
+
 </body>
 
 </html>

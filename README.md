@@ -40,15 +40,15 @@ speedj.all(['script1.js', 'script2.js', 'style.css'])
 ## Features
 
 ### Automatic Environment Detection
-- **Development:** Any domain different from the configured production domain
-- **Production:** User-configured domain
+- **Development:** HTTP protocol
+- **Production:** HTTPS protocol
 
 ### Automatic Cache Cleanup
-In development environment, the library automatically removes old versions of scripts and styles when loading new resources.
+In development environment, the library automatically adds a `cache_bust` parameter to prevent caching issues.
 
 ### URL Normalization
 - **Production:** `script.js` → `https://mydomain.com/script.js`
-- **Development:** `script.js` → `http://[current-host]/script.js?v=123456789`
+- **Development:** `script.js` → `http://[current-host]/script.js?cache_bust=123456789`
 
 ### Dynamic URL Handling
 - Automatically detects and uses the correct base URL

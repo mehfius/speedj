@@ -1,54 +1,33 @@
-// == Speedj Version Box ==
 // ╔══════════════════════╗
 // ║  Speedj v1.0.5       ║
 // ║  Production Ready    ║
-// ║  MIT Licensed       ║
+// ║  MIT Licensed        ║
 // ╚══════════════════════╝
 
 const speedj = (function() {
 	// Private functions
-	function isProduction() {
-		const host = window.location.hostname;
-		const configDomain = speedj.config.productionDomain;
-
-		if (!configDomain) return false;
-
-		const cleanConfigDomain = configDomain.split(':')[0];
-
-		const cleanHost = host.split(':')[0];
-
-		return cleanHost === cleanConfigDomain;
+	function is_production() {
+		return window.location.protocol === 'https:';
 	}
 
-	function normalizeUrl(url) {
-		if (url.startsWith('http://') || url.startsWith('https://')) {
-			return url;
-		}
-
-		const protocol = window.location.protocol;
-		const host = window.location.host;
-		const baseUrl = `${protocol}//${host}`;
-
-		if (isProduction()) {
-			return `${baseUrl}/${url}`;
-		} else {
-			return `${baseUrl}/${url}?v=${new Date().getTime()}`;
-		}
-	}
-
-	function getFileExtension(url) {
+	function get_file_extension(url) {
 		return url.split('?')[0].split('.').pop().toLowerCase();
 	}
 
-	function loadScript(url, resolve, reject) {
-		const baseUrl = url.split('?')[0];
-		const previousScripts = document.querySelectorAll(`script[src^="${baseUrl}"]`);
+	function load_script(url, resolve, reject) {
+		const base_url = url.split('?')[0];
+		const previous_scripts = document.querySelectorAll(`script[src^="${base_url}"]`);
+
+		if (!is_production()) {
+			const separator = url.includes('?') ? '&' : '?';
+			url = `${url}${separator}cache_bust=${new Date().getTime()}`;
+		}
 
 		const script = document.createElement('script');
 		script.src = url;
 		script.onload = () => {
 			setTimeout(() => {
-				previousScripts.forEach(s => s.remove());
+				previous_scripts.forEach(s => s.remove());
 				resolve();
 			}, 0);
 		};
@@ -56,16 +35,21 @@ const speedj = (function() {
 		document.head.appendChild(script);
 	}
 
-	function loadStyle(url, resolve, reject) {
-		const baseUrl = url.split('?')[0];
-		const previousLinks = document.querySelectorAll(`link[rel="stylesheet"][href^="${baseUrl}"]`);
+	function load_style(url, resolve, reject) {
+		const base_url = url.split('?')[0];
+		const previous_links = document.querySelectorAll(`link[rel="stylesheet"][href^="${base_url}"]`);
+
+		if (!is_production()) {
+			const separator = url.includes('?') ? '&' : '?';
+			url = `${url}${separator}cache_bust=${new Date().getTime()}`;
+		}
 
 		const link = document.createElement('link');
 		link.rel = 'stylesheet';
 		link.href = url;
 		link.onload = () => {
 			setTimeout(() => {
-				previousLinks.forEach(s => s.remove());
+				previous_links.forEach(s => s.remove());
 				resolve();
 			}, 0);
 		};
@@ -76,23 +60,22 @@ const speedj = (function() {
 	// Public API
 	const speedj = async function (url) {
 		try {
-			url = normalizeUrl(url);
 			return new Promise((resolve, reject) => {
-				const ext = getFileExtension(url);
+				const ext = get_file_extension(url);
 
 				switch (ext) {
 					case 'js':
-						loadScript(url, resolve, reject);
+						load_script(url, resolve, reject);
 						break;
 					case 'css':
-						loadStyle(url, resolve, reject);
+						load_style(url, resolve, reject);
 						break;
 					default:
 						reject(`Unsupported file type: ${ext}`);
 				}
 			});
 		} catch (error) {
-			return Promise.reject(`Error normalizing URL: ${error.message}`);
+			return Promise.reject(`Error loading resource: ${error.message}`);
 		}
 	};
 
@@ -103,21 +86,11 @@ const speedj = (function() {
 	};
 
 	speedj.config = {
-		productionDomain: null
+		production_domain: null
 	};
 
-	const scriptElement = document.currentScript;
-	if (scriptElement) {
-		const prodDomain = scriptElement.getAttribute('data-production-domain');
-		if (prodDomain) {
-			speedj.config.productionDomain = prodDomain;
-		} else {
-			console.error('%c Error: The "data-production-domain" attribute is not set. Please configure the production domain. ', 'color: red; background: black');
-		}
-	}
-	if (!isProduction()) {
-		console.log('%c Running in development environment ', 'color: yellow; background: black');
-		console.log(`%c Speedj v${speedj.version} `, 'color: white; background: green; font-weight: bold');
+	if (!is_production()) {
+		console.log(`%c Speedj v${speedj.version} - Running in development environment `, 'color: white; background: green; font-weight: bold');
 	}
 
 	return speedj;
